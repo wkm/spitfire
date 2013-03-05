@@ -53,7 +53,7 @@ module Spitfire
 				destination = Net::SSH.start(options.destination_host, destination_user)
 			    destChannel = channel_execute(
 			      destination, 
-			      "echo 'ok'; mkdir -p #{options.destination_dir}; cd #{options.destination_dir}; nc -vl #{options.port_number} | tar xvf -", 
+			      "echo 'ok'; mkdir -p #{options.destination_dir}; cd #{options.destination_dir}; nc -vl #{options.port_number} | tar xvvf -", 
 			      'DEST'
 			    )
 				destination.loop{true}
@@ -64,7 +64,7 @@ module Spitfire
 			puts "Connecting to source: #{options.source_host} as #{source_user}"
 			srcThread = Thread.new {
 				source = Net::SSH.start(options.source_host, source_user) 
-				command = "echo 'ok'; cd #{options.source_dir}; tar vc . | nc -v #{options.destination_host} #{options.port_number}"
+				command = "echo 'ok'; cd #{options.source_dir}; tar vvc . | nc -v #{options.destination_host} #{options.port_number}"
 		    
 			    srcChannel = channel_execute(
 			      source,
