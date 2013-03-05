@@ -10,14 +10,14 @@ Gem::Specification.new do |gem|
   gem.email         = ["wiktor@tumblr.com"]
   gem.description   = %q{ultra lightweight, encryption free directory transfer}
   gem.summary       = %q{ultra lightweight, encryption free directory transfer}
-  gem.homepage      = "github.com/wkm/spitfire"
+  gem.homepage      = "http://github.com/wkm/spitfire"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.dependency 'net-ssh'
-  gem.dependency 'highline'
-  gem.dependency 'thor'
+  gem.add_dependency 'net-ssh'
+  gem.add_dependency 'highline'
+  gem.add_dependency 'thor'
 end
